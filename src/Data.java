@@ -4,35 +4,24 @@ import java.util.Date;
 public class Data {
 
     public static String ValidarIdade(int dia,int mes,int ano){
-        //Objeto
-        SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
+        //Objetos
+        SimpleDateFormat sdf_dia = new SimpleDateFormat("dd");
+        SimpleDateFormat sdf_mes = new SimpleDateFormat("MM");
+        SimpleDateFormat sdf_ano = new SimpleDateFormat("yyyy");
         Date data = new Date();
 
         //Variaveis
-        int atual[] = new int[3];
-        int valor;
-        int contador = 0;
         int idade;
         int modelo = 18;
-        String data_formatada;
-        String[] data_dividida;
+        int dia_atual = Integer.parseInt(sdf_dia.format(data).toString());
+        int mes_atual = Integer.parseInt(sdf_mes.format(data).toString());
+        int ano_atual = Integer.parseInt(sdf_ano.format(data).toString());
+
+        idade = ano_atual - ano;
         
-        //Inicio
-        data_formatada = formatar.format(data);
-        data_dividida = data_formatada.split("/");
-        
-        //Construção do vetor Data Atual(separada)
-        while(contador < 3){
-            valor = Integer.parseInt(data_dividida[contador]);
-            atual[contador] = valor;
-            contador++;
-        }
-        
-        idade = atual[2] - ano;
-        
-        if (atual[1] < mes){
+        if (mes_atual < mes){
             idade -= 1;
-        }else if ((atual[1] == mes )&&(atual[0] < dia)){
+        }else if ((mes_atual == mes )&&(dia_atual < dia)){
             idade -= 1;
         }
         

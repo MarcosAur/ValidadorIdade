@@ -163,6 +163,7 @@ public class Tela extends javax.swing.JFrame {
         int ano = Integer.parseInt(this.ano.getSelectedItem().toString());
         String result = Data.ValidarIdade(dia, mes, ano);
         this.resultado.setText("Resultado: "+result);
+
         
         
     }//GEN-LAST:event_validarActionPerformed
